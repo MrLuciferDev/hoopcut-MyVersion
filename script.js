@@ -53,12 +53,27 @@ tl.to(".page1 h1", {
     x: -100,
 }, "anim")
 tl.to(".page1 h2", {
-    x: 100
+    x: 200
 }, "anim")
 tl.to(".page1 .video ", {
     width:"100%",
     height:"1000px"
 }, "anim")
+
+
+var t = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".page1 h1",
+        scroller: ".main",
+        // markers:true,
+        start: "top -90%",
+        end: "top -120%",
+        scrub: 3
+    }
+})
+t.to(".page1", {
+    opacity:0,
+})
 
 var tl2 = gsap.timeline({
     scrollTrigger: {
@@ -86,7 +101,7 @@ var tl3 = gsap.timeline({
 })
 
 tl3.to(".main",{
-    backgroundColor:"#0F0D0D"
+    backgroundColor:"#111"
 })
 
 
@@ -145,7 +160,29 @@ var white3 = document.querySelector("#white3");
 
 
 $(document).ready(function () {
-    $("#btn")
+    $("#btn1")
+      .on("mouseenter", function (e) {
+        var parentOffset = $(this).offset(),
+          relX = e.pageX - parentOffset.left,
+          relY = e.pageY - parentOffset.top;
+        $(this).find("span").css({
+          top: relY,
+          left: relX,
+        });
+      })
+      .on("mouseout", function (e) {
+        var parentOffset = $(this).offset(),
+          relX = e.pageX - parentOffset.left,
+          relY = e.pageY - parentOffset.top;
+        $(this).find("span").css({
+          top: relY,
+          left: relX,
+        });
+      });
+  });
+
+  $(document).ready(function () {
+    $("#btn2")
       .on("mouseenter", function (e) {
         var parentOffset = $(this).offset(),
           relX = e.pageX - parentOffset.left,
