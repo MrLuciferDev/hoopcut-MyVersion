@@ -43,8 +43,8 @@ var tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".page1 h1",
         scroller: ".main",
-        // markers:true,
-        start: "top 27%",
+        //markers:true,
+        start: "top 270",
         end: "top 0",
         scrub: 3
     }
@@ -65,9 +65,9 @@ var t = gsap.timeline({
     scrollTrigger: {
         trigger: ".page1 h1",
         scroller: ".main",
-        // markers:true,
-        start: "top -90%",
-        end: "top -120%",
+        //markers:true,
+        start: "top -900",
+        end: "top -1200",
         scrub: 3
     }
 })
@@ -79,9 +79,9 @@ var tl2 = gsap.timeline({
     scrollTrigger: {
         trigger: ".page1 h1",
         scroller: ".main",
-        // markers:true,
-        start: "top -115%",
-        end: "top -120%",
+        //markers:true,
+        start: "top -1150",
+        end: "top -1200",
         scrub: 3
     }
 })
@@ -94,8 +94,8 @@ var tl3 = gsap.timeline({
         trigger: ".page1 h1",
         scroller: ".main",
         // markers:true,
-        start: "top -280%",
-        end: "top -300%",
+        start: "top -2800",
+        end: "top -3000",
         scrub: 3
     }
 })
@@ -202,3 +202,53 @@ $(document).ready(function () {
         });
       });
   });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".item");
+    items.forEach((item) => {
+        item.addEventListener("mouseenter", shuffleAnimation);
+    });
+});
+
+ function getRandomCharacter(){
+    const chars=
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    return chars [Math.floor(Math.random()*chars.length)];
+ }
+
+function shuffleAnimation(event){
+    const target =event.currentTarget;
+    if(target.dataset.animating){
+        return;
+    }
+    target.dataset.animating=true;
+    const words=target.querySelectorAll(".word");
+    const originalWords= Array.from(words).map((word)=>word.textContent);
+
+    let shuffles=0;
+    const maxShuffles=10;
+    const intervalDuration=500/maxShuffles;
+
+    let animationInterval=setInterval(()=>{
+        if(shuffles>= maxShuffles){
+            clearInterval(animationInterval);
+            words.forEach((word,index)=>{
+                word.textContent=originalWords[index];
+            });
+
+            delete target.dataset.animating;
+        }
+        else{
+            words.forEach((word)=>{
+                const length = word.textContent.length;
+                let shuffledText="";
+                for(let i=0;i<length;i++){
+                    shuffledText+=getRandomCharacter();
+                }
+                word.textContent=shuffledText;
+            });
+            shuffles++;
+        }
+    },intervalDuration);
+}

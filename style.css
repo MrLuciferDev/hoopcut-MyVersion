@@ -107,7 +107,6 @@ a
     min-height: 80vh;
     width: 100%;
     padding: 100px 5vw;
-    border-bottom: 2px solid #6c6c6c;
     position: relative;
     z-index: 9;
 }
@@ -255,17 +254,19 @@ a
     justify-content: center;
     position: relative;
 }
-.elem dotlottie-player{
+.elem img{
     position: absolute;
     opacity: 0;
     transition: all ease-out 0.5s;
     transform: translateY(10%) rotate(2deg);
 }
-.elem dotlottie-player:nth-child(1){
+.elem img:nth-child(1){
     left: 2%;
+    height:15vw;
 }
-.elem dotlottie-player:nth-child(3){
+.elem img:nth-child(3){
     right: 5%;
+    height: 30vw;
 }
 .text-div{
     height: 8vw;
@@ -284,46 +285,95 @@ a
     transform: translateY(-100%);
     color: white;
 }
-.elem:hover dotlottie-player{
+.elem:hover img{
     opacity: 1;
     transform: translateY(0%) rotate(0deg);
 
 }
-
-
-.page5{
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    z-index: 9;
-    padding: 140px 100px;
-}
-.page5 h2{
-    font-size: 4vw;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 50px;
-}
-.box{
-    /* background-color: red; */
-    display: flex;
+.page5
+{
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    display:flex;
+    justify-content:center ;
     align-items: center;
-    justify-content: space-between;
-    height: 100px;
-    padding: 0 20px;
-    border-top: 2px solid #dadada;
+    flex-direction: column;
+    gap:50px;
 }
 
-.box:nth-last-child(1){
-    border-bottom: 2px solid #dadada;
-
+.page5 h1
+{
+    font-size:30px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.container5
+{
+    width:100%;
+    padding:0 2em;
+}
+.container5 .item
+{
+    -webkit-box-direction: 100%;
+    padding:0.125em 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-size:80px;
+    border-bottom:2px solid #c4bca9 ;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.item:nth-child(1)
+{
+    border-top:2px solid #c4bca9;
+}
+.img
+{
+    width:125px;
+    height:100px;
+    background-color: transparent;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    flex:0;
+    overflow: hidden;
+}
+.img dotlottie-player
+{
+    width:125px;
+    height:auto;
+    object-fit: cover;
+}
+.item:hover
+{
+    gap:20px;
+}
+.item:hover .img
+{
+    flex:0.1;
+}
+.item {
+    transition: background-color 1s ease-in-out;
 }
 
+.item:hover {
+    background-color: #c4bca9;
+}
+.item:hover .word
+{
+    color: black;
+}
+
+.w1
+{
+    text-align:right;
+}
 
 footer{
-    height: 90vh;
+    min-height: 50vh;
     width: 100%;
-    background-color: #EDBFFF;
+    background-color: #111111;
 }
 
 #white1{
@@ -332,7 +382,7 @@ footer{
     top: 0;
     position: fixed;
     z-index: 100;
-    background-color: wheat;
+    background-color: #c4bca9;
     opacity: 0;
     display: none;
     transition: opacity ease 1s;
@@ -345,7 +395,7 @@ footer{
     top: 0;
     position: fixed;
     z-index: 100;
-    background-color: wheat;
+    background-color: #c4bca9;
     opacity: 0;
     display: none;
     transition: opacity ease 1s;
@@ -357,7 +407,7 @@ footer{
     top: 0;
     position: fixed;
     z-index: 100;
-    background-color: wheat;
+    background-color: #c4bca9;
     opacity: 0;
     display: none;
     transition: opacity ease 1s;
@@ -379,7 +429,7 @@ footer{
 #marq {
     padding: 25px 0;
     width: 100%;
-    background-color: wheat;
+    background-color: #c4bca9;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
